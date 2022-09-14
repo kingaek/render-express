@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 app.get("/", (_, res) => {
   res.cookie("token", "value");
-  res.send("Hello Render, Can I setup cookies please");
+  res.json({ msg: "Hello Render, Can I setup cookies please" });
 });
 
 app.listen(PORT, () => {
