@@ -17,11 +17,15 @@ const corsOptions = {
 
 app.use(cookieParser());
 app.use(cors(corsOptions));
+console.log();
 
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (_, res) => {
-  res.cookie("token", "value", { sameSite: "none", secure: true });
+  res.cookie("token", "value", {
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
   res.json({ msg: "Hello Render, Can I setup cookies please" });
 });
 
