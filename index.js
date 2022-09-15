@@ -3,11 +3,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const whitelist = [
-  "http://localhost:5173",
-  "http://localhost:3000",
-  "https://react-cookie.netlify.app",
-];
+const PORT = process.env.PORT || 3000;
+
+const whitelist = ["http://localhost:5173", "https://react-cookie.netlify.app"];
 const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
@@ -21,8 +19,6 @@ const corsOptions = {
 
 app.use(cookieParser());
 app.use(cors(process.env.NODE_ENV === "production" ? corsOptions : undefined));
-
-const PORT = process.env.PORT || 3000;
 
 app.get("/", (_, res) => {
   console.log(process.env.NODE_ENV);
