@@ -3,10 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const whitelist = [
-  "http://localhost:5173",
-  "https://6322e3af8900897ddea8d571--glistening-klepon-c03030.netlify.app",
-];
+const whitelist = ["http://localhost:5173", "https://react-cookie.netlify.app"];
 const corsOptions = {
   credentials: true,
   origin: function (origin, callback) {
